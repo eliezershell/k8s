@@ -37,7 +37,7 @@ Agent instalado em cada Node que recebe instruções do Control Plane para geren
 ---
 
 ### Container
-Cada Node possui diferentes containers onde os microserviços são implantados.
+Aplicação empacotada em uma imagem com tudo que ela precisa para rodar — código, bibliotecas, dependências e configurações — em um ambiente isolado e portátil.
 
 ---
 
