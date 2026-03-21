@@ -7,7 +7,7 @@
 
 ### Control Plane
 Conjunto de componentes responsáveis por gerenciar o cluster. Os componentes do Control Plane podem rodar em diferentes ambientes:
-- Em **laboratórios**, podem estar no Node;
+- Em **laboratórios**, podem estar dentro de um Node;
 - Em **produção simples**, podem rodar em um servidor dedicado;
 - Em **ambientes mais complexos**, podem ser distribuídos em vários servidores dedicados para garantir alta disponibilidade e redundância.
 
