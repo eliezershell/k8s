@@ -31,13 +31,13 @@ Agent instalado em cada Node que recebe instruções do Control Plane para geren
 
 ---
 
-### Container
-Cada Node possui diferentes containers onde os microserviços são implantados.
+### Pod
+É a menor unidade de implantação do Kubernetes: uma abstração que encapsula um ou mais containers (na prática, geralmente apenas um), compartilhando rede, armazenamento e configurações de execução, permitindo que o Kubernetes gerencie todos os containers do Pod como uma única unidade.
 
 ---
 
-### Pod
-É a menor unidade de implantação do Kubernetes: uma abstração que encapsula um ou mais containers (na prática, geralmente apenas um), compartilhando rede, armazenamento e configurações de execução, permitindo que o Kubernetes gerencie todos os containers do Pod como uma única unidade.
+### Container
+Cada Node possui diferentes containers onde os microserviços são implantados.
 
 ---
 
