@@ -15,7 +15,7 @@ Conjunto de componentes responsáveis por gerenciar o cluster. Os componentes do
 | Componente | Descrição |
 |---|---|
 | **API Server** | Expõe a API do Kubernetes e recebe todas as requisições para gerenciar o cluster provenientes de UI, API e CLI (`kubectl`) |
-| **Controller Manager** | Responsável por garantir que o estado atual do cluster corresponda ao estado desejado |
+| **Controller Manager** | Responsável por garantir que o estado atual do cluster corresponda ao estado desejado (definido nos manifests) |
 | **Scheduler** | Processo inteligente responsável por decidir em qual Node um Pod será executado, baseado em métricas de CPU, Memória, etc. |
 | **etcd** | Banco de dados key-value que armazena todos os dados de configuração do cluster (Pods, Nodes, Deployments, etc.) |
 
