@@ -102,7 +102,7 @@ Recurso que anexa um armazenamento persistente a um Pod, contornando a efemerida
 ---
 
 ### Deployment
-Recurso do Kubernetes que gerencia o ciclo de vida de Pods de forma declarativa. Suas responsabilidades principais são:
+Recurso do Kubernetes que gerencia o ciclo de vida de Pods de forma declarativa (O Controller Manager lê o que o Deployment declarou e fica em loop garantindo via Deployment Controller que isso aconteça no cluster). Suas responsabilidades principais são:
 - **Criação e manutenção de réplicas** — garante que o número especificado de Pods esteja sempre em execução; se um Pod falhar, o Deployment recria automaticamente.
 - **Atualização controlada** — ao atualizar a imagem ou configuração da aplicação, o Deployment executa uma *rolling update* por padrão, substituindo os Pods gradualmente para evitar indisponibilidade.
 - **Rollback** — mantém o histórico de revisões, permitindo reverter para uma versão anterior em caso de falha.
