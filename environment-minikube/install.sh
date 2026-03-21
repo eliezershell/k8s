@@ -8,3 +8,4 @@ chmod +x ./docker/instalador_docker.sh
 ./docker/instalador_docker.sh
 
 minikube start --driver=docker
+sudo snap install kubectl --classic
