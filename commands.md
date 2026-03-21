@@ -24,13 +24,19 @@
 ## Diagnóstico Geral
 
 ```bash
-# Versão e conectividade com o API Server
+# Exibe versão do:
+# - Client (kubectl)
+# - Kustomize (ferramenta usada para customizar manifests sem modificá-los diretamente)
+# - API Server (Representa todos os componentes do Control Plane porque eles seguem a mesma versão do API Server)
+# E subentende conectividade com o API Server
 kubectl version
 
-# Informações gerais do cluster (API Server, CoreDNS, etc.)
+# - Exibe Endpoint do API Server
+# - Exibe Endpoint do Proxy do CoreDNS. Quando um Pod quer se comunicar com outro via nome (ex: meu-service.meu-namespace.svc.cluster.local), ele pergunta ao CoreDNS: "qual é o IP desse nome?" — e o CoreDNS responde com o ClusterIP do Service correspondente.
 kubectl cluster-info
 
-# Estado geral de todos os recursos
+# Estado geral de todos os recursos em todos os namespace (por isso o -A)
+#
 kubectl get all -A
 ```
 
