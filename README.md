@@ -46,7 +46,7 @@ Pod B (destino real)
 ```
 ---
 
-### Node Storage components
+### Pod Storage components
 | Componente | Descrição |
 |---|---|
 | **StorageClass** | Define como um volume persistente deve ser provisionado — é o "template" do armazenamento. Ela descreve o tipo de disco, o provedor e as configurações. |
