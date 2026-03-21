@@ -6,3 +6,5 @@ sudo apt update -y
 git clone https://github.com/eliezershell/docker.git
 chmod +x ./docker/instalador_docker.sh
 ./docker/instalador_docker.sh
+
+minikube start --driver=docker
