@@ -14,7 +14,7 @@ Conjunto de componentes responsáveis por gerenciar o cluster. Os componentes do
 #### Componentes do Control Plane
 | Componente | Descrição |
 |---|---|
-| **API Server** | Expõe a API do Kubernetes e recebe todas as requisições para gerenciar o cluster provenientes de UI, API e CLI (`kubectl`) |
+| **Kube Proxy** | Expõe a API do Kubernetes e recebe todas as requisições para gerenciar o cluster provenientes de UI, API e CLI (`kubectl`) |
 | **Controller Manager** | Responsável por garantir que o estado atual do cluster corresponda ao estado desejado (definido nos manifests) |
 | **Scheduler** | Processo inteligente responsável por decidir em qual Node um Pod será executado, baseado em métricas de CPU, Memória, etc. |
 | **etcd** | Banco de dados key-value que armazena todos os dados de configuração do cluster (Pods, Nodes, Deployments, etc.) |
@@ -24,6 +24,45 @@ Conjunto de componentes responsáveis por gerenciar o cluster. Os componentes do
 ### Node
 Servidor (físico ou virtual) que faz parte do cluster e é responsável por executar os Pods. Um cluster pode conter um ou mais Nodes.
 
+---
+
+### Node Network components
+| Componente | Descrição |
+|---|---|
+| **Kube-Proxy** | É um componente que roda em cada Node e é responsável por fazer o roteamento de rede funcionar na prática. Quando você cria um Service com ClusterIP 10.96.0.1, esse IP não existe fisicamente em nenhuma interface de rede — é virtual. O kube-proxy é quem transforma esse IP virtual em regras reais no sistema operacional (via iptables ou ipvs) para que o tráfego chegue de fato nos Pods certos. |
+| **CoreDNS** | É o servidor DNS interno do cluster. Ele é responsável por resolver nomes de Services e Pods para IPs. |
+
+Como os dois se relacionam:
+```
+Requisição do Pod A para "meu-service.namespace.svc.cluster.local"
+ ↓ pergunta "qual é o IP desse nome?" ao
+CoreDNS 
+ ↓ retorna
+ClusterIP 10.96.0.50
+ ↓ Pod A se conecta ao ClusterIP
+kube-proxy (regras de iptables no Node)
+ ↓ chega ao
+Pod B (destino real)
+```
+---
+
+### Node Storage components
+| Componente | Descrição |
+|---|---|
+| **StorageClass** | Define como um volume persistente deve ser provisionado — é o "template" do armazenamento. Ela descreve o tipo de disco, o provedor e as configurações. |
+| **PersistentVolume (PV)** | É o volume de fato — representa um disco real provisionado no cluster. Pode ser criado manualmente por um admin ou automaticamente pela StorageClass. |
+| **PersistentVolumeClaim (PVC)** | É o pedido de armazenamento feito por um Pod. O Pod não acessa o PV diretamente — ele cria um PVC dizendo o quanto precisa e qual tipo, e o Kubernetes vincula esse PVC a um PV disponível. |
+
+Como os três se relacionam:
+```
+Pod
+ ↓ usa
+PVC (pedido: "preciso de 10Gi")
+ ↓ vincula a
+PV (disco real de 10Gi)
+ ↓ que anteriormente foi provisionado pela
+StorageClass ("cria um EBS gp3 na AWS")
+```
 ---
 
 ### Kubelet
