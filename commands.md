@@ -36,7 +36,6 @@ kubectl version
 kubectl cluster-info
 
 # Estado geral de todos os recursos em todos os namespace (por isso o -A)
-#
 kubectl get all -A
 ```
 
