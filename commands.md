@@ -43,8 +43,7 @@ kubectl get all -A
 
 ## Control Plane
 
-O Control Plane é responsável por gerenciar o cluster. Em clusters criados com `kubeadm`, seus componentes rodam como Pods estáticos no namespace `kube-system`.
-O control plane é o conjunto lógico dos componentes responsáveis por controlar o cluster (etcd, apiserver, scheduler, controller manager). Ele roda em nodes dedicados, mas não é o node.
+O control plane é o conjunto lógico dos componentes responsáveis por controlar o cluster (etcd, apiserver, scheduler, controller manager). Ele roda em nodes dedicados, mas não é o node, é apenas o conjuntos dos recursos.
 
 ```bash
 # Status dos componentes do Control Plane
