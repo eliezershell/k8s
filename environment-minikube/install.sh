@@ -7,5 +7,5 @@ git clone https://github.com/eliezershell/docker.git
 chmod +x ./docker/instalador_docker.sh
 ./docker/instalador_docker.sh
 
-minikube start --driver=docker
+minikube start --driver=docker --nodes 2
 sudo snap install kubectl --classic
